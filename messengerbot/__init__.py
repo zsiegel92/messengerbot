@@ -27,9 +27,13 @@ class MessengerClient(object):
         params = {
             'access_token': self.access_token
         }
+        headers = {
+            "Content-Type": "application/json"
+        }
         response = requests.post(
             '%s/messages' % self.GRAPH_API_URL,
             params=params,
+            headers=headers,
             json=message.to_dict()
         )
         if response.status_code != 200:
